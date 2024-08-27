@@ -6,6 +6,16 @@ GREEN='\033[0;32m'
 BLUE='\033[1;34m'
 NC='\033[0m' # No Color
 
+# Prompt for installation confirmation
+echo -e "${GREEN}Apakah Anda ingin melakukan Installasi Nginx, MySQL, dan PHP? (Y/N)${NC}"
+read -n 1 -p "" CONFIRMATION
+echo
+
+if [[ $CONFIRMATION != "Y" && $CONFIRMATION != "y" ]]; then
+    echo -e "${YELLOW}Installasi dibatalkan.${NC}"
+    exit 1
+fi
+
 # Update package lists
 echo -e "${YELLOW}Updating package lists...${NC}"
 sudo apt-get update -y
